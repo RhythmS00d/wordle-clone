@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       data: {
-        active: 'key~="active"',
-        wrong: 'key~="wrong"',
-        correct: 'key~="correct"',
+        active: 'active~="true"',
+        wrong: 'wrong~="true"',
+        correct: 'correct~="true"',
       },
     },
   },
