@@ -13,8 +13,9 @@ function App() {
   }, []);
 
   return (
-    <main className="w-[60%] min-h-dvh my-0 mx-auto bg-gray-900">
-      <section className="flex flex-col items-center gap-1">
+    <main className="min-w-dvh min-h-dvh my-0 mx-auto bg-[#121213]">
+      <section className="flex flex-col items-center gap-[5px]">
+        <WordleInputGroup multiplier={5} />
         <WordleInputGroup multiplier={5} />
         <WordleInputGroup multiplier={5} />
         <WordleInputGroup multiplier={5} />

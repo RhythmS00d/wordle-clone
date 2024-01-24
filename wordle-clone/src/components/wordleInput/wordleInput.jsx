@@ -1,10 +1,7 @@
-export const WordleInput = () => {
+export const WordleInput = ({ ...props }) => {
   return (
-    <input
-      className="focus:shadow-orange-500/50 shadow-md text-white text-2xl text-center focus:outline-none bg-gray-600 rounded-sm w-10 aspect-square"
-      type="text"
-      required
-      maxLength={1}
-    />
+    <div className="text-white text-[1em] flex items-center justify-center font-sans font-medium border-2 border-[#3a3a3c] aspect-square w-[52px]">
+      A
+    </div>
   );
 };

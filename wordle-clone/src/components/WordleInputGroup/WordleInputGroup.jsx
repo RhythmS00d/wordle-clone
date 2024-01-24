@@ -1,12 +1,14 @@
 import { WordleInput } from "../wordleInput/wordleInput";
-import {cn} from '../../utils/twMerge'
+import { cn } from "../../utils/twMerge";
 
-export const WordleInputGroup = ({ multiplier, className }) => {
+export const WordleInputGroup = ({ multiplier, className, ...props }) => {
   return (
-    <div className={cn("flex gap-2", className)}>
+    <div className={cn("flex gap-[5px]", className)}>
       {Array(multiplier)
-        .fill(<WordleInput />)
-        .map((input) => input)}
+        .fill(0)
+        .map((input, index) => (
+          <WordleInput key={index} {...props} />
+        ))}
     </div>
   );
 };
