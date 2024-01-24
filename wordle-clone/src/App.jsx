@@ -12,7 +12,13 @@ function App() {
     setWord(words[random])
   }, []);
 
-  return <WordleInput/>
+  return (
+    <main className="w-[60%] min-h-dvh my-0 mx-auto bg-gray-900">
+      <section>
+        <WordleInput />
+      </section>
+    </main>
+  );
 }
 
 export default App;
