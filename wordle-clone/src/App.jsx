@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import words from './data/allWords'
 
 // components imports
-import { WordleInput } from "./components/WordleInput";
+import { WordleInputGroup } from "./components/WordleInputGroup";
 
 function App() {
   const [word, setWord] = useState("");
@@ -15,7 +15,7 @@ function App() {
   return (
     <main className="w-[60%] min-h-dvh my-0 mx-auto bg-gray-900">
       <section>
-        <WordleInput />
+        <WordleInputGroup multiplier={5} />
       </section>
     </main>
   );
