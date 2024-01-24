@@ -14,7 +14,11 @@ function App() {
 
   return (
     <main className="w-[60%] min-h-dvh my-0 mx-auto bg-gray-900">
-      <section>
+      <section className="flex flex-col items-center gap-1">
+        <WordleInputGroup multiplier={5} />
+        <WordleInputGroup multiplier={5} />
+        <WordleInputGroup multiplier={5} />
+        <WordleInputGroup multiplier={5} />
         <WordleInputGroup multiplier={5} />
       </section>
     </main>
