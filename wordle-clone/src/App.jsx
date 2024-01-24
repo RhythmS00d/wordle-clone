@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import services from "./utils/getRandomWord";
+import words from './data/allWords'
 
 // components imports
 import { WordleInput } from "./components/WordleInput";
@@ -8,10 +8,11 @@ function App() {
   const [word, setWord] = useState("");
 
   useEffect(() => {
-    services.getRandomWord().then((word) => setWord(word));
+    const random = Math.floor(Math.random() * words.length - 1)
+    setWord(words[random])
   }, []);
 
-  return <WordleInput />;
+  return <WordleInput/>
 }
 
 export default App;
