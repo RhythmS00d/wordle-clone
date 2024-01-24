@@ -2,7 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      data: {
+        active: 'key~="active"',
+        wrong: 'key~="wrong"',
+        correct: 'key~="correct"',
+      },
+    },
   },
   plugins: [],
 };
