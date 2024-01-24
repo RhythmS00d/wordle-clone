@@ -1,12 +1,16 @@
-export const handleTyping = (key) => {
-  const currentValue = sessionStorage.getItem("currentValue");
-
+export const handleTyping = (key, guesses, setGuesses, currentIndex) => {
   if (key === "BACKSPACE" || key === "DELETE") {
-    sessionStorage.setItem(
-      "currentValue",
-      currentValue.slice(0, currentValue.length - 1)
-    );
-  } else if (currentValue.length < 5) {
-    sessionStorage.setItem("currentValue", currentValue.concat(key));
+    setGuesses((prev) => ({
+      ...prev,
+      [currentIndex]: prev[currentIndex].slice(
+        0,
+        prev[currentIndex].length - 1
+      ),
+    }));
+  } else if (guesses[currentIndex].length < 5) {
+    setGuesses((prev) => ({
+      ...prev,
+      [currentIndex]: prev[currentIndex]+key
+    }));
   }
 };
