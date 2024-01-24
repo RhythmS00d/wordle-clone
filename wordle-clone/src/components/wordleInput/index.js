@@ -1,1 +1,1 @@
-export * from './wordleInput'
+export * from './WordleInput'
