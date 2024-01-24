@@ -4,7 +4,6 @@ import { KeyboardButton } from "../KeyboardButton/KeyboardButton";
 
 export const Keyboard = () => {
   const className = "flex justify-center gap-[4px]";
-  const keyStyle = "data-[key=Backspace]:w-fit";
   return (
     <>
       <div className={className}>
