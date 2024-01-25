@@ -4,10 +4,10 @@ import words from "./data/allWords";
 // components imports
 import { WordleInputGroup } from "./components/WordleInputGroup";
 import { Keyboard } from "./components/keyboard";
+import { GameEnd } from "./components/GameEnd/GameEnd";
 
 // utils imports
-import { handleTyping } from "./utils/handleTyping";
-import { handleAnswerLogic } from "./utils/handleAnswerLogic";
+import { handleKeyDown } from "./utils/handleKeydown";
 import { cn } from "./utils/twMerge";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
   });
   const [currentRowIndex, setCurrentRowIndex] = useState(1);
   const [answer, setAnswer] = useState("");
-  const [endGame, setEndGame] = useState(false)
+  const [endGame, setEndGame] = useState(false);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * words.length - 1);
@@ -36,50 +36,41 @@ function App() {
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown, true);
+    const handleKeyDownEvent = (e) => {
+      handleKeyDown(
+        e,
+        guesses,
+        setGuesses,
+        currentRowIndex,
+        setEndGame,
+        answer,
+        setCurrentRowIndex
+      );
+    };
+
+    document.addEventListener("keydown", handleKeyDownEvent, true);
     document.addEventListener("click", handleButtonClick, true);
 
-    if (currentRowIndex >= 6) {
-      // reset game option
-      // end game
-    }
+    if (currentRowIndex > 6) setEndGame(true);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown, true);
+      document.removeEventListener("keydown", handleKeyDownEvent, true);
       document.removeEventListener("click", handleButtonClick, true);
-      window.removeEventListener("keydown", handleKeyDown, true);
+      window.removeEventListener("keydown", handleKeyDownEvent, true);
       window.removeEventListener("click", handleButtonClick, true);
     };
   }, [guesses, currentRowIndex]);
 
-  function handleKeyDown(e) {
-    const key = e.key ? e.key : e.target.name;
-    if (
-      key.match(/^[a-zA-Z]{1}$/) ||
-      key === "Backspace" ||
-      key === "BACKSPACE"
-    ) {
-      handleTyping(key.toUpperCase(), guesses, setGuesses, currentRowIndex);
-    }
-
-    if (key === "Enter" || key === "ENTER") {
-      if (guesses[currentRowIndex].length < 5) {
-        // error animation
-      }
-      const activeInputs = document.querySelectorAll('[data-active="true"]');
-      const correctAnswer = handleAnswerLogic(
-        answer,
-        activeInputs,
-        setCurrentRowIndex
-      );
-
-      if (correctAnswer?.win) correctAnswer?.endGame(setEndGame, handleKeyDown);
-    }
-  }
-
   return (
     <main className="min-w-dvh min-h-dvh my-0 bg-[#121213]">
-      <div className={cn("w-full h-full opacity-85 absolute", endGame ? "bg-[#121213]" : "")}></div>
+      <div
+        className={cn(
+          "w-full h-full opacity-85 absolute flex items-center justify-center flex-col gap-9",
+          endGame ? "bg-[#121213]" : ""
+        )}
+      >
+        {endGame && <GameEnd />}
+      </div>
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
         <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700] flex-grow-2">
           Wordle

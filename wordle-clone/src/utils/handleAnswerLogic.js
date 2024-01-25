@@ -16,9 +16,9 @@ export const handleAnswerLogic = (
     }
   });
 
-  if(tempAnswer === "     ") {
+  if (tempAnswer === "     ") {
     // game win
-    return {win: true, endGame: handleGameWin}
+    return { win: true, endGame: handleGameWin };
   } else {
     // wrong answer animation
   }

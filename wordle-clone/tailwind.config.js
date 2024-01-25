@@ -7,6 +7,7 @@ export default {
         active: 'active~="true"',
         wrong: 'wrong~="true"',
         correct: 'correct~="true"',
+        error: 'error~="true"',
       },
     },
   },
