@@ -1,4 +1,4 @@
-import { handleGameWin } from "./handleGameWin";
+import { handleEndGame } from "./handleEndGame";
 
 export const handleAnswerLogic = (
   answer,
@@ -18,9 +18,7 @@ export const handleAnswerLogic = (
 
   if (tempAnswer === "     ") {
     // game win
-    return { win: true, endGame: handleGameWin };
-  } else {
-    // wrong answer animation
+    return { win: true, endGameHandler: handleEndGame };
   }
 
   setCurrentRowIndex((prev) => prev + 1);

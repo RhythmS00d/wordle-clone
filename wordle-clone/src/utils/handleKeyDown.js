@@ -35,7 +35,16 @@ export function handleKeyDown(
         setCurrentRowIndex
       );
 
-      if (correctAnswer?.win) correctAnswer?.endGame(setEndGame, handleKeyDown);
+      if (correctAnswer?.win) {
+        correctAnswer?.endGameHandler(setEndGame, handleKeyDown, true);
+      } else if (!correctAnswer) {
+        activeInputs[0].parentElement.setAttribute("data-error", "true");
+        setTimeout(
+          () => activeInputs[0].parentElement.removeAttribute("data-error"),
+          500
+        );
+        sessionStorage.setItem("gameWin", "false");
+      }
     }
   }
 }

@@ -69,7 +69,7 @@ function App() {
           endGame ? "bg-[#121213]" : ""
         )}
       >
-        {endGame && <GameEnd />}
+        {endGame && <GameEnd currentRow={currentRowIndex}/>}
       </div>
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
         <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700] flex-grow-2">
