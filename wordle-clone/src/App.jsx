@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     const handleButtonClick = (e) => {
       if (e.target.tagName === "BUTTON") {
-        handleKeyDown(e);
+        handleKeyDownEvent(e);
       }
     };
 
@@ -65,7 +65,7 @@ function App() {
     <main className="min-w-dvh min-h-dvh my-0 bg-[#121213]">
       <div
         className={cn(
-          "w-full h-full opacity-85 absolute flex items-center justify-center flex-col gap-9",
+          "w-full h-full pointer-events-none opacity-85 absolute flex items-center justify-center flex-col gap-9",
           endGame ? "bg-[#121213]" : ""
         )}
       >

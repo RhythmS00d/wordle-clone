@@ -11,7 +11,7 @@ export const GameEnd = ({ currentRow }) => {
       <h1 className="text-white text-2xl">{endGameText}</h1>
       <button
         onClick={handleReset}
-        className="text-white hover:bg-gray-800 w-20 aspect-square bg-black rounded-full flex items-center justify-center"
+        className="text-white pointer-events-auto hover:bg-gray-800 w-20 aspect-square bg-black rounded-full flex items-center justify-center"
       >
         <TbReload className="size-8" />
       </button>
