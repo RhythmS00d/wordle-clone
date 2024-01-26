@@ -36,7 +36,7 @@ export function handleKeyDown(
       );
 
       if (correctAnswer?.win) {
-        correctAnswer?.endGameHandler(setEndGame, handleKeyDown, true);
+        correctAnswer?.endGameHandler(setEndGame);
       } else if (!correctAnswer) {
         activeInputs[0].parentElement.setAttribute("data-error", "true");
         setTimeout(

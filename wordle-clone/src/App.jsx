@@ -22,54 +22,53 @@ function App() {
   const [currentRowIndex, setCurrentRowIndex] = useState(1);
   const [answer, setAnswer] = useState("");
   const [endGame, setEndGame] = useState(false);
+  const mainRef = useRef(null);
 
   useEffect(() => {
-    const random = Math.floor(Math.random() * words.length - 1);
+    const random = Math.floor(Math.random() * words.length);
     setAnswer(words[random]);
+    if (mainRef.current) {
+      mainRef.current.focus();
+    }
     console.log(words[random]);
   }, []);
 
-  useEffect(() => {
-    const handleButtonClick = (e) => {
-      if (e.target.tagName === "BUTTON") {
-        handleKeyDownEvent(e);
-      }
-    };
+  function handleKeyDownEvent(e) {
+    if(endGame) return;
 
-    const handleKeyDownEvent = (e) => {
-      handleKeyDown(
-        e,
-        guesses,
-        setGuesses,
-        currentRowIndex,
-        setEndGame,
-        answer,
-        setCurrentRowIndex
-      );
-    };
-
-    document.addEventListener("keydown", handleKeyDownEvent, true);
-    document.addEventListener("click", handleButtonClick, true);
+    handleKeyDown(
+      e,
+      guesses,
+      setGuesses,
+      currentRowIndex,
+      setEndGame,
+      answer,
+      setCurrentRowIndex
+    );
 
     if (currentRowIndex > 6) setEndGame(true);
+  }
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDownEvent, true);
-      document.removeEventListener("click", handleButtonClick, true);
-      window.removeEventListener("keydown", handleKeyDownEvent, true);
-      window.removeEventListener("click", handleButtonClick, true);
-    };
-  }, [guesses, currentRowIndex]);
+  const handleButtonClick = (e) => {
+    if (e.target.tagName === "BUTTON") {
+      handleKeyDownEvent(e);
+    }
+  };
 
   return (
-    <main className="min-w-dvh min-h-dvh my-0 bg-[#121213]">
+    <main
+      className="min-w-dvh min-h-dvh my-0 bg-[#121213]"
+      tabIndex="0"
+      onKeyDown={handleKeyDownEvent}
+      ref={mainRef}
+    >
       <div
         className={cn(
           "w-full h-full pointer-events-none opacity-85 absolute flex items-center justify-center flex-col gap-9",
           endGame ? "bg-[#121213]" : ""
         )}
       >
-        {endGame && <GameEnd currentRow={currentRowIndex}/>}
+        {endGame && <GameEnd currentRow={currentRowIndex} />}
       </div>
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
         <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700] flex-grow-2">
@@ -110,7 +109,7 @@ function App() {
           />
         </section>
         <section className="max-w-[60%] mx-auto">
-          <Keyboard />
+          <Keyboard onClick={handleButtonClick} />
         </section>
       </section>
     </main>

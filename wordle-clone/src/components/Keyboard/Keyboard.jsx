@@ -2,7 +2,7 @@ import keys from "../../data/keys";
 
 import { KeyboardButton } from "../KeyboardButton/KeyboardButton";
 
-export const Keyboard = () => {
+export const Keyboard = ({...props}) => {
   const className = "flex justify-center gap-[4px]";
   return (
     <>
@@ -12,6 +12,7 @@ export const Keyboard = () => {
             value={key.toUpperCase()}
             key={index}
             data-key={key}
+            {...props}
           />
         ))}
       </div>
@@ -21,6 +22,7 @@ export const Keyboard = () => {
             value={key.toUpperCase()}
             key={10 + index}
             data-key={key}
+            {...props}
           />
         ))}
       </div>
@@ -30,6 +32,7 @@ export const Keyboard = () => {
             value={key.toUpperCase()}
             key={20 + index}
             data-key={key}
+            {...props}
           />
         ))}
       </div>
