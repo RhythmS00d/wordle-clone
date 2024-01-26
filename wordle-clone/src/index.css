@@ -12,3 +12,16 @@ body {
     width: 100dvw;
     height: 100dvh;
 }
+
+div[data-error="true"] {
+    animation: shake 100ms linear;
+}
+
+@keyframes shake {
+    from {
+        rotate: 2deg;
+    }
+    to {
+        rotate: -2deg;
+    }
+}

@@ -1,3 +1,5 @@
+import { handleEndGame } from "./handleEndGame";
+
 export const handleAnswerLogic = (
   answer,
   activeElements,
@@ -13,5 +15,11 @@ export const handleAnswerLogic = (
       element.setAttribute("data-wrong", "true");
     }
   });
+
+  if (tempAnswer === "     ") {
+    // game win
+    return { win: true, endGameHandler: handleEndGame };
+  }
+
   setCurrentRowIndex((prev) => prev + 1);
 };
