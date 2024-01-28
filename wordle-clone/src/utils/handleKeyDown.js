@@ -3,7 +3,10 @@ import { handleAnswerLogic } from "./handleAnswerLogic";
 import store from "../store/store";
 
 export const handleKeyDown = (e) => {
-  const { guesses, currentRowIndex, answer } = store;
+  const { guesses, currentRowIndex, endGame } = store;
+  
+  if (currentRowIndex > 6 || endGame) return;
+
   const key = e.key ? e.key : e.target.name;
   const activeInputs = document.querySelectorAll('[data-active="true"]');
 
@@ -28,6 +31,7 @@ export const handleKeyDown = (e) => {
           500
         );
         sessionStorage.setItem("gameWin", "false");
+        store.increaseRowIndex();
       }
     }
   } else if (

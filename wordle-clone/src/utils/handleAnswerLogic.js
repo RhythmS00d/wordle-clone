@@ -19,6 +19,4 @@ export const handleAnswerLogic = (activeElements) => {
     // game win
     return { win: true, endGameHandler: handleEndGame };
   }
-
-  store.increaseRowIndex();
 };

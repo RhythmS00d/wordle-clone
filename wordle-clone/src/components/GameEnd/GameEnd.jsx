@@ -1,13 +1,24 @@
 import { TbReload } from "react-icons/tb";
 import { handleReset } from "../../utils/handleReset";
 
-export const GameEnd = ({ currentRow }) => {
+import { observer } from "mobx-react";
+
+import store from "../../store/store";
+import { cn } from "../../utils/twMerge";
+
+export const GameEnd = observer(() => {
+  const { currentRowIndex, endGame } = store;
   const endGameText =
     sessionStorage.getItem("gameWin") === "true"
-      ? "Congrats! You guessed it right" + ` - ${currentRow} guesses`
+      ? "Congrats! You guessed it right" + ` - ${currentRowIndex} guesses`
       : "Guesses Finished! Game ended";
-  return (
-    <>
+  return currentRowIndex > 6 || endGame ? (
+    <div
+      className={cn(
+        "w-full h-full pointer-events-none opacity-85 absolute flex items-center justify-center flex-col gap-9",
+        currentRowIndex > 6 || endGame ? "bg-[#121213]" : ""
+      )}
+    >
       <h1 className="text-white text-2xl">{endGameText}</h1>
       <button
         onClick={handleReset}
@@ -15,6 +26,8 @@ export const GameEnd = ({ currentRow }) => {
       >
         <TbReload className="size-8" />
       </button>
-    </>
+    </div>
+  ) : (
+    <></>
   );
-};
+});

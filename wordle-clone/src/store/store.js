@@ -24,13 +24,9 @@ class Store {
   }
 
   useBackspace() {
-    this.guesses = {
-      ...this.guesses,
-      [this.currentRowIndex]: this.guesses[this.currentRowIndex].slice(
-        0,
-        this.guesses[this.currentRowIndex].length - 1
-      ),
-    };
+    this.guesses[this.currentRowIndex] = this.guesses[
+      this.currentRowIndex
+    ].slice(0, this.guesses[this.currentRowIndex].length - 1);
   }
 
   updateGuesses(key) {
