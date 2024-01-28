@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import words from "./data/allWords";
+import { useEffect, useRef } from "react";
 
 // components imports
 import { WordleInputGroup } from "./components/WordleInputGroup";
@@ -10,43 +9,27 @@ import { GameEnd } from "./components/GameEnd/GameEnd";
 import { handleKeyDown } from "./utils/handleKeydown";
 import { cn } from "./utils/twMerge";
 
+// import store
+import store from "./store/store";
+
+import { observer } from "mobx-react";
+
 function App() {
-  const [guesses, setGuesses] = useState({
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: "",
-    6: "",
-  });
-  const [currentRowIndex, setCurrentRowIndex] = useState(1);
-  const [answer, setAnswer] = useState("");
-  const [endGame, setEndGame] = useState(false);
+  let { currentRowIndex, guesses, endGame } = store;
   const mainRef = useRef(null);
 
   useEffect(() => {
-    const random = Math.floor(Math.random() * words.length);
-    setAnswer(words[random]);
     if (mainRef.current) {
       mainRef.current.focus();
     }
-    console.log(words[random]);
   }, []);
 
   function handleKeyDownEvent(e) {
-    if(endGame) return;
+    if (endGame) return;
 
-    handleKeyDown(
-      e,
-      guesses,
-      setGuesses,
-      currentRowIndex,
-      setEndGame,
-      answer,
-      setCurrentRowIndex
-    );
+    handleKeyDown(e);
 
-    if (currentRowIndex > 6) setEndGame(true);
+    if (currentRowIndex > 6) endGame = true;
   }
 
   const handleButtonClick = (e) => {
@@ -81,31 +64,37 @@ function App() {
             multiplier={5}
             value={guesses[1]}
             data-active={currentRowIndex === 1 ? true : false}
+            currentRow={1}
           />
           <WordleInputGroup
             multiplier={5}
             value={guesses[2]}
             data-active={currentRowIndex === 2 ? true : false}
+            currentRow={2}
           />
           <WordleInputGroup
             multiplier={5}
             value={guesses[3]}
             data-active={currentRowIndex === 3 ? true : false}
+            currentRow={3}
           />
           <WordleInputGroup
             multiplier={5}
             value={guesses[4]}
             data-active={currentRowIndex === 4 ? true : false}
+            currentRow={4}
           />
           <WordleInputGroup
             multiplier={5}
             value={guesses[5]}
             data-active={currentRowIndex === 5 ? true : false}
+            currentRow={5}
           />
           <WordleInputGroup
             multiplier={5}
             value={guesses[6]}
             data-active={currentRowIndex === 6 ? true : false}
+            currentRow={6}
           />
         </section>
         <section className="max-w-[60%] mx-auto">
@@ -116,4 +105,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

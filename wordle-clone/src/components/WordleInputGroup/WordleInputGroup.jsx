@@ -1,15 +1,27 @@
 import { WordleInput } from "../wordleInput/wordleInput";
 import { cn } from "../../utils/twMerge";
 
-export const WordleInputGroup = ({ multiplier, value, className, ...props }) => {
+import store from "../../store/store";
+import { useState } from "react";
+import { observer } from "mobx-react";
 
-  return (
-    <div className={cn("flex gap-[5px]", className)} data-type="row">
-      {Array(multiplier)
-        .fill(0)
-        .map((input, index) => (
-          <WordleInput key={index} {...props} value={value[index]} />
-        ))}
-    </div>
-  );
-};
+export const WordleInputGroup = observer(
+  ({ multiplier, value, className, currentRow, ...props }) => {
+    return (
+      <div
+        className={cn(`flex gap-[5px] data-error:animate-shake`, className)}
+        data-type="row"
+      >
+        {Array(multiplier)
+          .fill(0)
+          .map((input, index) => (
+            <WordleInput
+              key={index}
+              {...props}
+              value={value[index]}
+            />
+          ))}
+      </div>
+    );
+  }
+);

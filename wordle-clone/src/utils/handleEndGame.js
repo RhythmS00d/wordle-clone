@@ -1,4 +1,6 @@
-export const handleEndGame = (setEndGame) => {
-  setEndGame((prev) => !prev);
-  sessionStorage.setItem('gameWin', 'true')
-};
+import store from "../store/store";
+
+export const handleEndGame = (() => {
+  store.updateEndGame()
+  sessionStorage.setItem("gameWin", "true");
+});
