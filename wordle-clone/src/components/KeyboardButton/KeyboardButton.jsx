@@ -1,5 +1,3 @@
-import { handleTyping } from "../../utils/handleTyping";
-
 export const KeyboardButton = ({ value, ...props }) => {
   return (
     <button
