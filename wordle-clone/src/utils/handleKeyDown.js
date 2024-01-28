@@ -1,4 +1,5 @@
 import { handleAnswerLogic } from "./handleAnswerLogic";
+import words from "../data/allWords";
 
 import store from "../store/store";
 
@@ -25,6 +26,15 @@ export const handleKeyDown = (e) => {
         store.updateShowAlert("");
       }, 1500);
     } else {
+      if (!words.includes(guesses[currentRowIndex].toLowerCase())) {
+        store.updateShowAlert("Not a word");
+        setTimeout(() => {
+          store.updateShowAlert("");
+        }, 1500);
+
+        return;
+      }
+
       const correctAnswer = handleAnswerLogic(activeInputs);
 
       if (correctAnswer?.win) {
