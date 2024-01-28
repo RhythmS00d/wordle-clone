@@ -7,7 +7,16 @@ export default {
         active: 'active~="true"',
         wrong: 'wrong~="true"',
         correct: 'correct~="true"',
-        error: 'error~="true"',
+        error: `error~="true"`,
+      },
+      animation: {
+        shake: "shake 100ms linear",
+      },
+      keyframes: {
+        shake: {
+          from: { rotate: "2deg" },
+          to: { rotate: "-2deg" },
+        },
       },
     },
   },

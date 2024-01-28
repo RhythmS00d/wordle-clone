@@ -13,7 +13,7 @@ body {
     height: 100dvh;
 }
 
-div[data-error="true"] {
+/* div[data-error="true"] {
     animation: shake 100ms linear;
 }
 
@@ -24,4 +24,4 @@ div[data-error="true"] {
     to {
         rotate: -2deg;
     }
-}
+} */
