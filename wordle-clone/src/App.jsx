@@ -4,15 +4,10 @@ import { useEffect, useRef } from "react";
 import { WordleInputGroup } from "./components/WordleInputGroup";
 import { Keyboard } from "./components/keyboard";
 import { GameEnd } from "./components/GameEnd/GameEnd";
+import { Alert } from "./components/Alert/Alert";
 
 // utils imports
 import { handleKeyDown } from "./utils/handleKeydown";
-import { cn } from "./utils/twMerge";
-
-// import store
-import store from "./store/store";
-
-import { observer } from "mobx-react";
 
 function App() {
   const mainRef = useRef(null);
@@ -35,11 +30,12 @@ function App() {
 
   return (
     <main
-      className="min-w-dvh min-h-dvh my-0 bg-[#121213]"
+      className="min-w-dvh min-h-dvh my-0 bg-[#121213] relative overflow-hidden"
       tabIndex="0"
       onKeyDown={handleKeyDownEvent}
       ref={mainRef}
     >
+      <Alert />
       <GameEnd />
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
         <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700] flex-grow-2">

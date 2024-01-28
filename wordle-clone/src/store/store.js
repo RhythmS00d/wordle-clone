@@ -13,6 +13,8 @@ class Store {
   currentRowIndex = 1;
   answer = "";
   endGame = false;
+  showAlert = false;
+  alertText = "";
 
   constructor(answer) {
     makeAutoObservable(this);
@@ -35,6 +37,11 @@ class Store {
 
   updateEndGame() {
     this.endGame = !this.endGame;
+  }
+
+  updateShowAlert(text) {
+    this.showAlert = !this.showAlert;
+    this.alertText = text;
   }
 }
 

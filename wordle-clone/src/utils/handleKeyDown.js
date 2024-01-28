@@ -4,7 +4,7 @@ import store from "../store/store";
 
 export const handleKeyDown = (e) => {
   const { guesses, currentRowIndex, endGame } = store;
-  
+
   if (currentRowIndex > 6 || endGame) return;
 
   const key = e.key ? e.key : e.target.name;
@@ -19,6 +19,11 @@ export const handleKeyDown = (e) => {
         () => activeInputs[0].parentElement.removeAttribute("data-error"),
         500
       );
+
+      store.updateShowAlert("5 letters required");
+      setTimeout(() => {
+        store.updateShowAlert("");
+      }, 1500);
     } else {
       const correctAnswer = handleAnswerLogic(activeInputs);
 
@@ -30,6 +35,10 @@ export const handleKeyDown = (e) => {
           () => activeInputs[0].parentElement.removeAttribute("data-error"),
           500
         );
+        store.updateShowAlert("Wrong answer!");
+        setTimeout(() => {
+          store.updateShowAlert("");
+        }, 1500);
         sessionStorage.setItem("gameWin", "false");
         store.increaseRowIndex();
       }
