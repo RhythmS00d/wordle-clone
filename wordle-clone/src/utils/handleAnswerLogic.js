@@ -1,10 +1,9 @@
 import { handleEndGame } from "./handleEndGame";
 
-export const handleAnswerLogic = (
-  answer,
-  activeElements,
-  setCurrentRowIndex
-) => {
+import store from "../store/store";
+
+export const handleAnswerLogic = (activeElements) => {
+  const { answer } = store;
   let tempAnswer = answer.toUpperCase();
   activeElements.forEach((element, index) => {
     if (element.innerHTML === tempAnswer[index]) {
@@ -20,6 +19,4 @@ export const handleAnswerLogic = (
     // game win
     return { win: true, endGameHandler: handleEndGame };
   }
-
-  setCurrentRowIndex((prev) => prev + 1);
 };

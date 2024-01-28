@@ -1,50 +1,52 @@
-import { handleTyping } from "./handleTyping";
 import { handleAnswerLogic } from "./handleAnswerLogic";
 
-export function handleKeyDown(
-  e,
-  guesses,
-  setGuesses,
-  currentRowIndex,
-  setEndGame,
-  answer,
-  setCurrentRowIndex
-) {
-  const key = e.key ? e.key : e.target.name;
-  if (
-    key.match(/^[a-zA-Z]{1}$/) ||
-    key === "Backspace" ||
-    key === "BACKSPACE"
-  ) {
-    handleTyping(key.toUpperCase(), guesses, setGuesses, currentRowIndex);
-  }
+import store from "../store/store";
 
-  if (key === "Enter" || key === "ENTER") {
-    const activeInputs = document.querySelectorAll('[data-active="true"]');
+export const handleKeyDown = (e) => {
+  const { guesses, currentRowIndex, endGame } = store;
+
+  if (currentRowIndex > 6 || endGame) return;
+
+  const key = e.key ? e.key : e.target.name;
+  const activeInputs = document.querySelectorAll('[data-active="true"]');
+
+  if (key === "BACKSPACE" || key === "DELETE" || key === "Backspace") {
+    store.useBackspace();
+  } else if (key === "Enter" || key === "ENTER") {
     if (guesses[currentRowIndex].length < 5) {
-      // error animation
       activeInputs[0].parentElement.setAttribute("data-error", "true");
       setTimeout(
         () => activeInputs[0].parentElement.removeAttribute("data-error"),
         500
       );
+
+      store.updateShowAlert("5 letters required");
+      setTimeout(() => {
+        store.updateShowAlert("");
+      }, 1500);
     } else {
-      const correctAnswer = handleAnswerLogic(
-        answer,
-        activeInputs,
-        setCurrentRowIndex
-      );
+      const correctAnswer = handleAnswerLogic(activeInputs);
 
       if (correctAnswer?.win) {
-        correctAnswer?.endGameHandler(setEndGame, handleKeyDown, true);
+        correctAnswer?.endGameHandler();
       } else if (!correctAnswer) {
         activeInputs[0].parentElement.setAttribute("data-error", "true");
         setTimeout(
           () => activeInputs[0].parentElement.removeAttribute("data-error"),
           500
         );
+        store.updateShowAlert("Wrong answer!");
+        setTimeout(() => {
+          store.updateShowAlert("");
+        }, 1500);
         sessionStorage.setItem("gameWin", "false");
+        store.increaseRowIndex();
       }
     }
+  } else if (
+    guesses[currentRowIndex].length < 5 &&
+    key.match(/^[a-zA-Z]{1}$/)
+  ) {
+    store.updateGuesses(key.toUpperCase());
   }
-}
+};
