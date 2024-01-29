@@ -1,4 +1,4 @@
-import { WordleInput } from "../wordleInput/wordleInput";
+import { WordleInput } from "../WordleInput";
 import { cn } from "../../utils/twMerge";
 
 import store from "../../store/store";
