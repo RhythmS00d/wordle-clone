@@ -1,25 +1,21 @@
-import { handleAnswerLogic } from "./handleAnswerLogic";
 import words from "../data/allWords";
 
 import store from "../store/store";
+import { handleEndGame } from "./handleEndGame";
 
 export const handleKeyDown = (e) => {
-  const { guesses, currentRowIndex, endGame } = store;
+  const { guesses, currentRowIndex, endGame, answer } = store;
 
   if (currentRowIndex > 6 || endGame) return;
 
   const key = e.key ? e.key : e.target.name;
-  const activeInputs = document.querySelectorAll('[data-active="true"]');
 
   if (key === "BACKSPACE" || key === "DELETE" || key === "Backspace") {
     store.useBackspace();
   } else if (key === "Enter" || key === "ENTER") {
     if (guesses[currentRowIndex].length < 5) {
-      activeInputs[0].parentElement.setAttribute("data-error", "true");
-      setTimeout(
-        () => activeInputs[0].parentElement.removeAttribute("data-error"),
-        500
-      );
+      store.updateSubmitted(currentRowIndex);
+      setTimeout(() => store.updateSubmitted(currentRowIndex), 500);
 
       store.updateShowAlert("5 letters required");
       setTimeout(() => {
@@ -31,27 +27,20 @@ export const handleKeyDown = (e) => {
         setTimeout(() => {
           store.updateShowAlert("");
         }, 1500);
-
         return;
       }
 
-      const correctAnswer = handleAnswerLogic(activeInputs);
+      const correctAnswer = guesses[currentRowIndex] === answer.toUpperCase();
 
-      if (correctAnswer?.win) {
-        correctAnswer?.endGameHandler();
+      if (correctAnswer) {
+        handleEndGame();
       } else if (!correctAnswer) {
-        activeInputs[0].parentElement.setAttribute("data-error", "true");
-        setTimeout(
-          () => activeInputs[0].parentElement.removeAttribute("data-error"),
-          500
-        );
-        store.updateShowAlert("Wrong answer!");
-        setTimeout(() => {
-          store.updateShowAlert("");
-        }, 1500);
+        store.updateError(currentRowIndex);
+        setTimeout(() => store.updateError(currentRowIndex), 500);
         sessionStorage.setItem("gameWin", "false");
         store.increaseRowIndex();
       }
+      store.updateSubmitted(currentRowIndex);
     }
   } else if (
     guesses[currentRowIndex].length < 5 &&

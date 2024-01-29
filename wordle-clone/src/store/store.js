@@ -10,6 +10,22 @@ class Store {
     5: "",
     6: "",
   };
+  submitted = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+  };
+  error = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+  };
   currentRowIndex = 1;
   answer = "";
   endGame = false;
@@ -42,6 +58,14 @@ class Store {
   updateShowAlert(text) {
     this.showAlert = !this.showAlert;
     this.alertText = text;
+  }
+
+  updateSubmitted(id) {
+    this.submitted[id] = !this.submitted[id];
+  }
+
+  updateError(id) {
+    this.error[id] = !this.error[id];
   }
 }
 
