@@ -7,7 +7,7 @@ import { GameEnd } from "./components/GameEnd/GameEnd";
 import { Alert } from "./components/Alert/Alert";
 
 // utils imports
-import { handleKeyDown } from "./utils/handleKeydown";
+import { handleKeyDown } from "./utils/handleKeyDown";
 
 /**
  *
