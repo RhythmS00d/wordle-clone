@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {value} 
+ * @returns a button with the specified key value
+ */
+
 export const KeyboardButton = ({ value, ...props }) => {
   return (
     <button

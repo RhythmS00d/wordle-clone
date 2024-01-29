@@ -9,19 +9,37 @@ import { Alert } from "./components/Alert/Alert";
 // utils imports
 import { handleKeyDown } from "./utils/handleKeydown";
 
+/**
+ *
+ * @returns an app with all the components
+ */
+
 function App() {
   const mainRef = useRef(null);
 
+  /**
+   * sets the focus on main element
+   */
   useEffect(() => {
     if (mainRef.current) {
       mainRef.current.focus();
     }
   }, []);
 
+  /**
+   *
+   * @param {*} e
+   * handles key down events
+   */
   function handleKeyDownEvent(e) {
     handleKeyDown(e);
   }
 
+  /**
+   *
+   * @param {*} e
+   * handles keyboard button events
+   */
   const handleButtonClick = (e) => {
     if (e.target.tagName === "BUTTON") {
       handleKeyDownEvent(e);
@@ -39,7 +57,7 @@ function App() {
       <GameEnd />
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
         <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700] flex-grow-2">
-          Wordle
+          Wordle Clone
         </h1>
       </nav>
       <section className="h-full flex flex-col flex-1 items-center justify-evenly">

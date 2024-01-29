@@ -6,8 +6,14 @@ import { observer } from "mobx-react";
 import store from "../../store/store";
 import { cn } from "../../utils/twMerge";
 
+/**
+ * @returns a blurry div to indicate game end based on current row || endGame
+ */
+
 export const GameEnd = observer(() => {
   const { currentRowIndex, endGame } = store;
+
+  // sets endGameText according to gameWin
   const endGameText =
     sessionStorage.getItem("gameWin") === "true"
       ? "Congrats! You guessed it right" + ` - ${currentRowIndex} guesses`
