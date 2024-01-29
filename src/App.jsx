@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 // components imports
 import { WordleInputGroup } from "./components/WordleInputGroup";
-import { Keyboard } from "./components/keyboard";
+import { Keyboard } from "./components/Keyboard";
 import { GameEnd } from "./components/GameEnd/GameEnd";
 import { Alert } from "./components/Alert/Alert";
 
