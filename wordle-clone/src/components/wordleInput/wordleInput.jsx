@@ -3,8 +3,15 @@ import { cn } from "../../utils/twMerge";
 
 import store from "../../store/store";
 
+/**
+ * @param {className, currentCol, currentRow}
+ * @function sets the data attribute of correct/wrong/active according to 
+ * the current guess and current row
+ * @returns a div with the current entered guess
+ */
+
 export const WordleInput = observer(
-  ({ value, className, currentCol, currentRow, ...props }) => {
+  ({ className, currentCol, currentRow, ...props }) => {
     const { guesses, currentRowIndex, submitted, answer } = store;
     const correctLetter =
       guesses[currentRow][currentCol] === answer[currentCol].toUpperCase();

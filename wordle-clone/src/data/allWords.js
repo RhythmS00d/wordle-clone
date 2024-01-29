@@ -1,3 +1,8 @@
+/**
+ * @returns random words fetched from 
+ * "https://random-word-api.herokuapp.com/word?length=5&number=9000"
+ */
+
 const words = [
   "quips",
   "crime",

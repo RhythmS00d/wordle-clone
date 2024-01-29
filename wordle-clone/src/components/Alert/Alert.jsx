@@ -3,6 +3,10 @@ import { cn } from "../../utils/twMerge";
 import store from "../../store/store";
 import { observer } from "mobx-react";
 
+/**
+ * @returns a div to display an alert message
+ */
+
 export const Alert = observer(() => {
   const { showAlert, alertText } = store;
   const open = "animate-alert flex opacity-100";

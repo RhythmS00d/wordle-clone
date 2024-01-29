@@ -4,8 +4,13 @@ import { cn } from "../../utils/twMerge";
 import store from "../../store/store";
 import { observer } from "mobx-react";
 
+/**
+ * @param {multiplier, className}
+ * @return multipier*(component with a single cell input div)
+ */
+
 export const WordleInputGroup = observer(
-  ({ multiplier, value, className, ...props }) => {
+  ({ multiplier, className, ...props }) => {
     const { error } = store;
     return (
       <div

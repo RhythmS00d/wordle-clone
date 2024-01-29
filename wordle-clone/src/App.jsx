@@ -9,19 +9,37 @@ import { Alert } from "./components/Alert/Alert";
 // utils imports
 import { handleKeyDown } from "./utils/handleKeydown";
 
+/**
+ *
+ * @returns an app with all the components
+ */
+
 function App() {
   const mainRef = useRef(null);
 
+  /**
+   * sets the focus on main element
+   */
   useEffect(() => {
     if (mainRef.current) {
       mainRef.current.focus();
     }
   }, []);
 
+  /**
+   *
+   * @param {*} e
+   * handles key down events
+   */
   function handleKeyDownEvent(e) {
     handleKeyDown(e);
   }
 
+  /**
+   *
+   * @param {*} e
+   * handles keyboard button events
+   */
   const handleButtonClick = (e) => {
     if (e.target.tagName === "BUTTON") {
       handleKeyDownEvent(e);
