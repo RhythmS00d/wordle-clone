@@ -19,15 +19,6 @@ function App() {
   const mainRef = useRef(null);
 
   /**
-   * sets the focus on main element
-   */
-  useEffect(() => {
-    if (mainRef.current) {
-      mainRef.current.focus();
-    }
-  }, []);
-
-  /**
    *
    * @param {*} e
    * handles key down events
@@ -54,7 +45,7 @@ function App() {
       onKeyDown={handleKeyDownEvent}
       ref={mainRef}
     >
-      <HowToPlay />
+      <HowToPlay reference={mainRef}/>
       <Alert />
       <GameEnd />
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">

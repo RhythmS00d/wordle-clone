@@ -3,9 +3,9 @@ import words from "../data/allWords";
 
 /**
  * @usage sets all states and their setters
- * 
+ *
  * @constructor create a new instance of the store with a random word/answer
- * 
+ *
  * @returns a store instance
  */
 
@@ -33,6 +33,34 @@ class Store {
     4: false,
     5: false,
     6: false,
+  };
+  keys = {
+    A: "",
+    B: "",
+    C: "",
+    D: "",
+    E: "",
+    F: "",
+    G: "",
+    H: "",
+    I: "",
+    J: "",
+    K: "",
+    L: "",
+    M: "",
+    N: "",
+    O: "",
+    P: "",
+    Q: "",
+    R: "",
+    S: "",
+    T: "",
+    U: "",
+    V: "",
+    W: "",
+    X: "",
+    Y: "",
+    Z: "",
   };
   currentRowIndex = 1;
   answer = "";
@@ -83,10 +111,14 @@ class Store {
   updateError(id) {
     this.error[id] = !this.error[id];
   }
+
+  updateKeyColor(key, color) {
+    this.keys[key] = color;
+  }
 }
 
 const random = Math.floor(Math.random() * words.length);
 console.log(words[random]);
-const store = new Store(words[random]);
+const store = new Store(words[random].toUpperCase());
 
 export default store;

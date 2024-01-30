@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const HowToPlay = () => {
+export const HowToPlay = ({ reference }) => {
   const [showHelpMenu, setShowHelpMenu] = useState(true);
+
+  useEffect(() => {
+    if (reference.current && showHelpMenu === false) {
+      reference.current.focus();
+    }
+  }, [showHelpMenu]);
 
   return showHelpMenu ? (
     <section className="w-full h-[100dvh] pt-20 absolute">

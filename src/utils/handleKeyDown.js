@@ -71,6 +71,15 @@ export const handleKeyDown = (e) => {
 
       // updates the submit state of current guess
       store.updateSubmitted(currentRowIndex);
+
+      // updates the keyboard button colors
+      for (let i = 0; i < guesses[currentRowIndex].length; i++) {
+        if (answer[i] === guesses[currentRowIndex][i])
+          store.updateKeyColor(guesses[currentRowIndex][i], "bg-[#538d4e]");
+        else if (answer.includes(guesses[currentRowIndex][i]))
+          store.updateKeyColor(guesses[currentRowIndex][i], "bg-[#b59f3b]");
+        else store.updateKeyColor(guesses[currentRowIndex][i], "bg-[#3a3a3c]");
+      }
     }
   } else if (
     // checks if current is length !== 5 and not submitted

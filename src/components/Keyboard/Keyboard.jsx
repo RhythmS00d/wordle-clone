@@ -3,12 +3,13 @@ import keys from "../../data/keys";
 import { KeyboardButton } from "../KeyboardButton/KeyboardButton";
 
 /**
- * 
+ *
  * @returns set of buttons styled in form of keyboard
  */
 
-export const Keyboard = ({...props}) => {
+export const Keyboard = ({ ...props }) => {
   const className = "flex justify-center gap-[4px]";
+
   return (
     <>
       <div className={className}>
