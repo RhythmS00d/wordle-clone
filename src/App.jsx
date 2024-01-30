@@ -45,7 +45,7 @@ function App() {
       onKeyDown={handleKeyDownEvent}
       ref={mainRef}
     >
-      <HowToPlay reference={mainRef}/>
+      <HowToPlay reference={mainRef} />
       <Alert />
       <GameEnd />
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
@@ -62,8 +62,8 @@ function App() {
           <WordleInputGroup multiplier={5} currentRow={5} />
           <WordleInputGroup multiplier={5} currentRow={6} />
         </section>
-        <section className="max-w-[60%] mx-auto">
-          <Keyboard onClick={handleButtonClick} />
+        <section className="max-w-[60%] max-sm:max-w-[85%]">
+          <Keyboard onClick={handleButtonClick}/>
         </section>
       </section>
     </main>

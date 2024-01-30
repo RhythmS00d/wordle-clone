@@ -118,7 +118,6 @@ class Store {
 }
 
 const random = Math.floor(Math.random() * words.length);
-console.log(words[random]);
 const store = new Store(words[random].toUpperCase());
 
 export default store;

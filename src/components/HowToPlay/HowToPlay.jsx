@@ -11,7 +11,7 @@ export const HowToPlay = ({ reference }) => {
 
   return showHelpMenu ? (
     <section className="w-full h-[100dvh] pt-20 absolute">
-      <dialog className="w-full h-[calc(85%-30px)] bg-transparent flex items-center justify-center">
+      <dialog className="w-full h-[calc(85%-30px)] max-sm:h-[calc(85%-10px)] bg-transparent flex items-center justify-center">
         <div className="bg-[#121213] border-[#1d1d1e] overflow-y-scroll relative border-[2px] p-8 h-full w-[90%] max-w-[520px] rounded-lg shadow-[0_4px_23px_0_rgba(0,0,0,.2)]">
           <div className="w-full text-white p-[16px] font-sans">
             <h2 className="text-3xl font-bold leading-7 pb-2">How To Play</h2>
