@@ -3,8 +3,9 @@ import { useEffect, useRef } from "react";
 // components imports
 import { WordleInputGroup } from "./components/WordleInputGroup";
 import { Keyboard } from "./components/Keyboard";
-import { GameEnd } from "./components/GameEnd/GameEnd";
-import { Alert } from "./components/Alert/Alert";
+import { GameEnd } from "./components/GameEnd/";
+import { Alert } from "./components/Alert/";
+import { HowToPlay } from "./components/HowToPlay/";
 
 // utils imports
 import { handleKeyDown } from "./utils/handleKeyDown";
@@ -53,6 +54,7 @@ function App() {
       onKeyDown={handleKeyDownEvent}
       ref={mainRef}
     >
+      <HowToPlay />
       <Alert />
       <GameEnd />
       <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">

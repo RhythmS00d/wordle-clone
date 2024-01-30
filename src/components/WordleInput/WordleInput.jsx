@@ -11,7 +11,7 @@ import store from "../../store/store";
  */
 
 export const WordleInput = observer(
-  ({ className, currentCol, currentRow, ...props }) => {
+  ({ className = "", currentCol = 0, currentRow = 0, ...props }) => {
     const { guesses, currentRowIndex, submitted, answer } = store;
     const correctLetter =
       guesses[currentRow][currentCol] === answer[currentCol].toUpperCase();
@@ -35,7 +35,7 @@ export const WordleInput = observer(
           answer.toUpperCase().includes(guesses[currentRow][currentCol])
         }
       >
-        {guesses[currentRow][currentCol]}
+        {props.value ? props.value : guesses[currentRow][currentCol]}
       </div>
     );
   }
