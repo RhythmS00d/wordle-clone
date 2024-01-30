@@ -11,7 +11,7 @@ import { cn } from "../../utils/twMerge";
  */
 
 export const GameEnd = observer(() => {
-  const { currentRowIndex, endGame } = store;
+  const { currentRowIndex, endGame, answer } = store;
 
   // sets endGameText according to gameWin
   const endGameText =
@@ -21,10 +21,13 @@ export const GameEnd = observer(() => {
   return currentRowIndex > 6 || endGame ? (
     <div
       className={cn(
-        "w-full h-full pointer-events-none opacity-85 absolute flex items-center justify-center flex-col gap-9",
+        "w-full h-full pointer-events-none opacity-95 absolute flex items-center justify-center flex-col gap-9",
         currentRowIndex > 6 || endGame ? "bg-[#121213]" : ""
       )}
     >
+      <div className="w-[130px] h-[50px] bg-white flex items-center justify-center rounded-md">
+        <h1 className="text-2xl font-bold uppercase tracking-widest">{answer}</h1>
+      </div>
       <h1 className="text-white text-2xl">{endGameText}</h1>
       <button
         onClick={handleReset}
