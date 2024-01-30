@@ -85,7 +85,7 @@ export const HowToPlay = ({ reference }) => {
                     </div>
                   </div>
                   <div className="inline-flex w-[32px] h-[32px] mr-[4px] align-baseline">
-                    <div className="bg-red-400 text-[#f8f8f8] pt-[1px] text-[1.6rem] inline-flex items-center justify-center font-bold align-middle leading-[1] uppercase w-full">
+                    <div className="bg-[#b59f3b] text-[#f8f8f8] pt-[1px] text-[1.6rem] inline-flex items-center justify-center font-bold align-middle leading-[1] uppercase w-full">
                       I
                     </div>
                   </div>
