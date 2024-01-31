@@ -6,7 +6,7 @@
 
 This is a simple implementation of Wordle.
 
-To use the clone head to [Wordle Clone](https://wordle-clone-peach-zeta.vercel.app/)
+To use the clone, head to [Wordle Clone](https://wordle-clone-peach-zeta.vercel.app/)
 
 Please visit offical [Wordle](https://www.nytimes.com/games/wordle/index.html) for more information.
 
@@ -29,6 +29,8 @@ Follow the steps below:
 
 - Run the project:
 `npm run dev`
+
+- Open `http://localhost:5173/` in your browser
 
 ## Disclaimer
 
