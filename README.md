@@ -1,4 +1,4 @@
-#WORDLE CLONE
+# WORDLE CLONE
 
 ### created by Rhythm Sood
 
