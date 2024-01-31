@@ -48,10 +48,17 @@ function App() {
       <HowToPlay reference={mainRef} />
       <Alert />
       <GameEnd />
-      <nav className="w-[100dvw] flex items-center justify-center flex-nowrap m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[65px]">
-        <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700] flex-grow-2">
+      <nav className="w-[100dvw] flex items-center justify-center flex-col m-0 p-0 border-b-[1px] border-b-[#3a3a3c] h-[80px]">
+        <h1 className="text-white text-4xl font-[nyt-karnakcondensed] font-[700]">
           Wordle Clone
         </h1>
+        <a
+          href="https://github.com/RhythmS00d/wordle-clone"
+          target="_blank"
+          className="flex gap-6 items-center justify-center max-w-fit underline text-white"
+        >
+          Find the source code here!
+        </a>
       </nav>
       <section className="h-full flex flex-col flex-1 items-center justify-evenly">
         <section className="flex flex-col items-center gap-[5px] mt-6 mb-6">
@@ -63,7 +70,7 @@ function App() {
           <WordleInputGroup multiplier={5} currentRow={6} />
         </section>
         <section className="max-w-[60%] max-sm:max-w-[85%]">
-          <Keyboard onClick={handleButtonClick}/>
+          <Keyboard onClick={handleButtonClick} />
         </section>
       </section>
     </main>

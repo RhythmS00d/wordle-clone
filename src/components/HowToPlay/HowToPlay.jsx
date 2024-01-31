@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { FaGithub } from "react-icons/fa";
+
 export const HowToPlay = ({ reference }) => {
   const [showHelpMenu, setShowHelpMenu] = useState(true);
 
@@ -140,6 +142,13 @@ export const HowToPlay = ({ reference }) => {
                 </div>
               </div>
             </section>
+            <a
+              href="https://github.com/RhythmS00d/wordle-clone"
+              target="_blank"
+              className="flex gap-6 items-center justify-center max-w-fit mt-6 underline"
+            >
+              <FaGithub className="w-5 h-5"/> Find the source code here!
+            </a>
           </div>
         </div>
       </dialog>
