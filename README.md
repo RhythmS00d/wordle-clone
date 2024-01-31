@@ -21,12 +21,13 @@ Please visit offical [Wordle](https://www.nytimes.com/games/wordle/index.html) f
 
 - Download/clone the repository in your desired directory
 - Open the repository in a code editor like VS Code editor
-- Follow the steps below:
 
-- Install all dependencies
+Follow the steps below:
+
+- Install all dependencies:
 `npm install`
 
-- Run the project
+- Run the project:
 `npm run dev`
 
 ## Disclaimer
