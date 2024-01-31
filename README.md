@@ -8,6 +8,8 @@ This is a simple implementation of Wordle.
 
 To use the clone, head to [Wordle Clone](https://wordle-clone-peach-zeta.vercel.app/)
 
+<a target="_blank" href="https://wordle-clone-peach-zeta.vercel.app/">Click Here</a>
+
 Please visit offical [Wordle](https://www.nytimes.com/games/wordle/index.html) for more information.
 
 ## Features
