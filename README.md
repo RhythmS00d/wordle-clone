@@ -17,6 +17,18 @@ Please visit offical [Wordle](https://www.nytimes.com/games/wordle/index.html) f
 3. Every submission displays write and wrong letters.
 4. After submission of a guess word, the green lettter is the correct letter, yellow is the correct letter but in wrong spot and greyed out letter is not present in the answer.
 
+## How to use
+
+- Download/clone the repository in your desired directory
+- Open the repository in a code editor like VS Code editor
+- Follow the steps below:
+
+- Install all dependencies
+`npm install`
+
+- Run the project
+`npm run dev`
+
 ## Disclaimer
 
 > This project is not intended to be used for general purpose. This is purely for educational purposes.
